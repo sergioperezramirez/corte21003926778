@@ -49,3 +49,53 @@
 |1 | Usuario 1 |     1    |     3      |
 |2 | Usuario 2 |     2    |     2      |
 |3 | Usuario 3 |     3    |     1      |
+
+
+>Ver
+![modelo relacional del ejercicio](Sorteo.png)
+
+
+*Script de la base de datos
+
+     DROP DATABASE IF EXISTS Concesionario;
+
+     CREATE DATABASE Concesionario;
+     
+     USE Concesionario; 
+
+     CREATE table Categoria (
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Nombre VARCHAR (50) NOT NULL,
+        Estilo VARCHAR (50) NOT NULL,
+        Eficiencia VARCHAR (50) NOT NULL
+     );
+
+     CREATE table Autos(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Nombre VARCHAR (50) NOT NULL,
+        Marca VARCHAR (50) NOT NULL,
+        Color VARCHAR(50) NOT NULL,
+        Precio float NOT NULL,
+        categoria_Id INT NOT NULL,
+        FOREING KEY (categoria_Id) REFERENCES Categoria(Id)
+     );
+
+     CREATE table Persona(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Nombre VARCHAR(50) NOT NULL,
+        Edad INT NOT NULL,
+        Cedula VARCHAR(50) NOT NULL,
+        Profesion VARCHAR(50) NOT NULL,
+     );
+
+     CREATE table AutosPersona(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Usuario VARCHAR(50) NOT NULL,
+        autos_Id INT NOT NULL,
+        persona_Id INT NOT NULL,
+        FOREING KEY (autos_Id) REFERENCES Autos(Id)
+        FOREING KEY (persona_Id) REFERENCES Persona(Id)
+     );
+
+## Ver planificación 
+[ver aqui](https://trello.com/b/D5V5rtHN/parcial)

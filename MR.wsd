@@ -1,0 +1,36 @@
+@startuml Sorteo Autos
+
+class Categoria{
+    -Int: Id
+    -String: Nombre 
+    -String: Estilo
+    -String: Eficiencia
+}
+class Autos{
+    -Int: Id
+    -String: Nombre 
+    -String: Marca
+    -String: Color
+    -Float: Precio
+    -Categoria: categoria
+}
+
+class Persona{
+    - Int: Id
+    -String: Nombre
+    -Int: Edad
+    -String: Cedula
+    -String: Profesion   
+}
+
+class Autospersona{
+    -Int: Id
+    -String: Usuario
+    -Autos: autos_Id
+    -Persona: persona_Id
+}
+
+Categoria "1" -- "*" Autos: contiene
+Persona "1" -- "*" Autospersona : contiene
+Autos "1" -- "*" Autospersona : contienen
+@enduml
